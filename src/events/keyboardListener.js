@@ -4,7 +4,7 @@
  * 
  */
 
-var Factory = require('src/core/Factory');
+var Factory = require('../core/Factory');
 
 var keyboardListener = function() {
 	var handlers = [];
