@@ -4,7 +4,7 @@
  * 
  */
 
-var Factory = require('../core/Factory');
+var Factory = require('src/core/Factory');
 
 var keyboardListener = function() {
 	var handlers = [];
@@ -12,12 +12,12 @@ var keyboardListener = function() {
 	var context = this.context;
 	
 	function init () {
-		$(document).bind('keydown', function(e) {
+		document.addEventListener('keydown', function(e) {
 //			e.preventDefault();
 			if ((e.keyCode >= 0 && e.keyCode <= 31) || (e.keyCode >= 95 && e.keyCode <= 99) || e.keyCode >= 223) 	// something between shift and escape
 				return;
 			else {
-				$.each(handlers, function(key, handler) {
+				handlers.forEach(function(handler, key) {
 					handler(e.originalEvent, e.ctrlKey, e.shiftKey, e.altKey, e.keyCode);
 				});
 			}
