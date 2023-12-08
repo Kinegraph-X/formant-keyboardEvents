@@ -1,11 +1,10 @@
 const KeyboardEvents = require('src/events/JSKeyboardMap');
 
 /**
- * @module keyboardListener
+ * @constructor keyboardListener
  * 
  * 
  */
-
 const KeyboardListener = function() {
 	let onPressedHandlers = [];
 	let onReleasedHandlers = [];
@@ -17,7 +16,7 @@ const KeyboardListener = function() {
 	function init () {
 		document.addEventListener('keydown', function(e) {
 //			e.preventDefault();
-			if ((e.keyCode >= 0 && e.keyCode <= 31) || (e.keyCode >= 95 && e.keyCode <= 99) || e.keyCode >= 223) 	// something between shift and escape
+			if ((e.keyCode >= 0 && e.keyCode <= 31 && e.keyCode !== 8 && e.keyCode !== 13) || (e.keyCode >= 95 && e.keyCode <= 99) || e.keyCode >= 223) 	// something between shift and escape
 				return;
 			else {
 				if (!pressedKeys[e.keyCode]) {
@@ -31,7 +30,7 @@ const KeyboardListener = function() {
 		
 		document.addEventListener('keyup', function(e) {
 //			e.preventDefault();
-			if ((e.keyCode >= 0 && e.keyCode <= 31) || (e.keyCode >= 95 && e.keyCode <= 99) || e.keyCode >= 223) 	// something between shift and escape
+			if ((e.keyCode >= 0 && e.keyCode <= 31 && e.keyCode !== 8 && e.keyCode !== 13) || (e.keyCode >= 95 && e.keyCode <= 99) || e.keyCode >= 223) 	// something between shift and escape
 				return;
 			else {
 				pressedKeys[e.keyCode] = false;
